@@ -1,0 +1,14 @@
+<launch>
+  <arg name="robot_description" command="$(find xacro)/xacro $(find urdf)/test.urdf.xacro"/>
+
+  <param name="robot_description" textfile="$(arg robot_description)"/>
+
+  <!-- Launch the robot state publisher to publish TF transforms -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen"/>
+
+  <!-- Launch RViz for visualization -->
+  <node name="rviz" pkg="rviz" type="rviz" required="true">
+    <param name="config" value="$(find my_robot_description)/config/robot.rviz"/>
+  </node>
+</launch>
+

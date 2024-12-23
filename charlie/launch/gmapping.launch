@@ -1,0 +1,17 @@
+<launch>
+
+    <include file="$(find rplidar_ros)/launch/s2.launch">
+    </include>
+
+    <!-- TF 브로드캐스터 노드 -->
+    <node pkg="charlie" type="tf_broadcaster.py" name="tf_broadcaster" output="screen"/>
+
+
+
+    <node pkg="hector_slam" type="hector_mapping" name="hector_mapping" output="screen">
+        <param name="base_frame" value="camera_pose_frame"/>
+        <param name="odom_frame" value="camera_odom_frame"/>
+        <param name="map_frame" value="map"/>
+    </node>
+</launch>
+
