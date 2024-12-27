@@ -1,11 +1,15 @@
 <launch>
-
+    <!-- Lidar -->
     <include file="$(find rplidar_ros)/launch/s2.launch">
     </include>
-
+    
+    <!-- TF setting -->
     <node pkg="charlie" type="tf_broadcaster.py" name="tf_broadcaster" output="screen"/>
     
-    <!-- 로봇 URDF 모델 -->
+    <!-- Zeltech motor odom & joint state publisher -->
+    <node pkg="charlie" type="joint+odom.py" name="motor_odom" output="screen"/>
+    
+    <!-- URDF -->
     <param name="robot_description" command="xacro $(find charlie)/urdf/test.urdf.xacro"/>
 
     <!-- robot_state_publisher-->
