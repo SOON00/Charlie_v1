@@ -1,7 +1,15 @@
+#먼저 usb can 케이블 뽑힌 상태로 아래 3줄
+
 sudo modprobe slcan
 lsmod | grep can
 ls /dev/ttyACM*
+
+#케이블 꽂고 포트 확인하고 나머지 실행
+
+ls /dev/ttyACM*
+
 sudo slcand -o -c -s6 /dev/ttyACM1 can0
 sudo ip link set up can0
 dmesg | grep can
+
 

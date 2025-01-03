@@ -15,7 +15,7 @@ class Odom_class:
 
         # 로봇의 기본 파라미터
         self.wheels_separation = 0.48  # 휠 간 거리 (m)
-        self.wheels_radius = 0.08255  # 휠 반지름 (m)
+        self.wheels_radius = 0.085  # 휠 반지름 (m)
 
         # 상태 변수들
         self.robot_pose = np.array([0.0, 0.0, 0.0])  # 로봇의 위치 (x, y, theta)
@@ -37,8 +37,8 @@ class Odom_class:
         """
         cmd_vel 토픽을 구독하여 로봇의 속도를 받아옴
         """
-        linear_velocity = msg.linear.x
-        angular_velocity = msg.angular.z
+        linear_velocity = 0.01*msg.linear.x
+        angular_velocity = -0.01*msg.angular.z#0.759
         current_time = rospy.Time.now()
         duration = (current_time - self.last_time).to_sec()
 

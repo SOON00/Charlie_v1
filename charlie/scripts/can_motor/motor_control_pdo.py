@@ -47,11 +47,11 @@ class CANopenNode:
         # msg.data는 배열 형태로 받아옵니다
         wheel_radius = (WHEELSIZE / 2) * 0.0254
 
-        v = -msg.linear.x
+        v = msg.linear.x
         w = msg.angular.z
 
-        v_left = (v - (WHEELBASE / 2.0) * w)
-        v_right = (v + (WHEELBASE / 2.0) * w)
+        v_left = (v + (WHEELBASE / 2.0) * w)
+        v_right = (v - (WHEELBASE / 2.0) * w)
 
         left_rad_per_sec = v_left / wheel_radius
         right_rad_per_sec = v_right / wheel_radius
@@ -114,8 +114,8 @@ class CANopenNode:
 
     def send_pdo_data(self):
         rospy.loginfo('Sending PDO Data...')
-        self.node.rpdo[1]['Target_velocity.Left Motor Target_velocity'].raw = self.left_velocity
-        self.node.rpdo[1]['Target_velocity.Right Motor Target_velocity'].raw = -1 * self.right_velocity
+        self.node.rpdo[1]['Target_velocity.Left Motor Target_velocity'].raw = -1 * self.left_velocity
+        self.node.rpdo[1]['Target_velocity.Right Motor Target_velocity'].raw = 1 * self.right_velocity
 
     def process_tpdo(self, msg):
         left_motor_speed = msg['Velocity_actual_value.Left Motor Velocity_actual_value'].raw
@@ -158,4 +158,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
