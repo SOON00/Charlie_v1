@@ -10,7 +10,7 @@ def static_transforms():
     # camera_pose_frame -> laser 변환 (레이저 센서 위치)
     laser_transform = TransformStamped()
     laser_transform.header.stamp = rospy.Time.now()
-    laser_transform.header.frame_id = "base_footprint"
+    laser_transform.header.frame_id = "base_link"
     laser_transform.child_frame_id = "laser"
     laser_transform.transform.translation.x = 0.0
     laser_transform.transform.translation.y = 0.0

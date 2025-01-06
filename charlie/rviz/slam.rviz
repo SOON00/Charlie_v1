@@ -70,11 +70,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        base_scan:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
         caster_back_left_link:
           Alpha: 1
           Show Axes: false
@@ -85,10 +80,6 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
-        imu_link:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
         wheel_left_link:
           Alpha: 1
           Show Axes: false
@@ -116,13 +107,9 @@ Visualization Manager:
           Value: true
         base_link:
           Value: true
-        base_scan:
-          Value: true
         caster_back_left_link:
           Value: true
         caster_back_right_link:
-          Value: true
-        imu_link:
           Value: true
         laser:
           Value: true
@@ -147,20 +134,16 @@ Visualization Manager:
           odom:
             base_footprint:
               base_link:
-                base_scan:
-                  {}
                 caster_back_left_link:
                   {}
                 caster_back_right_link:
                   {}
-                imu_link:
+                laser:
                   {}
                 wheel_left_link:
                   {}
                 wheel_right_link:
                   {}
-              laser:
-                {}
           scanmatcher_frame:
             {}
       Update Interval: 0
@@ -202,7 +185,7 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Angle: 1.5699998140335083
+      Angle: 4.710007190704346
       Class: rviz/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
@@ -214,8 +197,8 @@ Visualization Manager:
       Near Clip Distance: 0.009999999776482582
       Scale: 131.29237365722656
       Target Frame: <Fixed Frame>
-      X: 0.18983206152915955
-      Y: 0.015385488048195839
+      X: 0.03757917508482933
+      Y: 0.11452236771583557
     Saved:
       - Angle: -1.569999098777771
         Class: rviz/TopDownOrtho

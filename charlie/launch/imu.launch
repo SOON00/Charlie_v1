@@ -1,0 +1,32 @@
+<launch>
+
+    <!-- imu -->
+    <node pkg="charlie" type="imu_pub.py" name="imu_pub" output="screen"/>
+    <node pkg="charlie" type="tf_imu.py" name="tf_imu" output="screen"/>
+    
+    <!-- Lidar -->
+    <include file="$(find rplidar_ros)/launch/s2.launch">
+    </include>
+    
+    <!-- TF setting -->
+    <node pkg="charlie" type="tf_broadcaster.py" name="tf_broadcaster" output="screen"/>
+    
+    <!-- Zeltech motor odom & joint state publisher -->
+    <node pkg="charlie" type="joint+odom.py" name="motor_odom" output="screen"/>
+    
+    <!-- URDF -->
+    <param name="robot_description" command="xacro $(find charlie)/urdf/test.urdf.xacro"/>
+
+    <!-- robot_state_publisher-->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen">
+        <param name="publish_frequency" value="50"/>
+    </node>
+
+    <!-- Hector Mapping-->
+    <include file="$(find hector_mapping)/launch/imu.launch">
+    </include>
+
+    <!-- RViz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find charlie)/rviz/slam.rviz" required="true" />
+</launch>
+

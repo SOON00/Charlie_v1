@@ -37,7 +37,7 @@ class Odom_class:
         """
         cmd_vel 토픽을 구독하여 로봇의 속도를 받아옴
         """
-        linear_velocity = 0.01*msg.linear.x
+        linear_velocity = -0.01*msg.linear.x
         angular_velocity = -0.01*msg.angular.z#0.759
         current_time = rospy.Time.now()
         duration = (current_time - self.last_time).to_sec()
@@ -84,14 +84,14 @@ class Odom_class:
 
         # 로봇의 위치 업데이트
         odom_msg.pose.pose.position.x = self.robot_pose[0]
-        odom_msg.pose.pose.position.y = self.robot_pose[1]
+        odom_msg.pose.pose.position.y = -self.robot_pose[1]
         odom_msg.pose.pose.position.z = 0.0
 
         # 로봇의 orientation (회전각도) 업데이트
         q = tf.transformations.quaternion_from_euler(0.0, 0.0, self.robot_pose[2])
         odom_msg.pose.pose.orientation.x = q[0]
         odom_msg.pose.pose.orientation.y = q[1]
-        odom_msg.pose.pose.orientation.z = q[2]
+        odom_msg.pose.pose.orientation.z = -q[2]
         odom_msg.pose.pose.orientation.w = q[3]
 
         # 속도 정보 업데이트
