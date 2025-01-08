@@ -1,13 +1,11 @@
 <launch>
 
-  <param name="use_sim_time" value="false"/>
-  <node name="cartographer_node" pkg="cartographer_ros" type="cartographer_node" args="-configuration_directory $(find cartographer_ros)/configuration_files backpack_2d.lua"/>
-
-
-
     <!-- Lidar -->
     <include file="$(find rplidar_ros)/launch/s2.launch">
     </include>
+    
+    <!-- Lidar filtering -->
+    <node pkg="charlie" type="scan_filter.py" name="scan_filter" output="screen"/>
     
     <!-- TF setting -->
     <node pkg="charlie" type="tf_broadcaster.py" name="tf_broadcaster" output="screen"/>
@@ -22,7 +20,11 @@
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen">
         <param name="publish_frequency" value="50"/>
     </node>
-
+    
+    <!-- slam -->
+    <include file="$(find gmapping)/launch/gmapping.launch">
+    </include>
+    
     <!-- RViz -->
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find charlie)/rviz/slam.rviz" required="true" />
 

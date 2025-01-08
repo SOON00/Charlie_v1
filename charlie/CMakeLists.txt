@@ -13,11 +13,14 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   tf
   tf2_ros
+  roscpp
+  std_msgs
+  sensor_msgs
 )
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
-
+find_package(Eigen3 REQUIRED)
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -107,7 +110,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES charlie
-#  CATKIN_DEPENDS geometry_msgs nav_msgs rospy tf
+  CATKIN_DEPENDS roscpp rospy std_msgs nav_msgs geometry_msgs sensor_msgs tf
 #  DEPENDS system_lib
 )
 
@@ -120,6 +123,7 @@ catkin_package(
 include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
+  ${EIGEN3_INCLUDE_DIR}
 )
 
 ## Declare a C++ library
@@ -135,7 +139,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/charlie_node.cpp)
+ add_executable(wheel_odom src/wheel_odom.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -148,9 +152,9 @@ include_directories(
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(${PROJECT_NAME}_node
-#   ${catkin_LIBRARIES}
-# )
+ target_link_libraries(wheel_odom
+   ${catkin_LIBRARIES}
+ )
 
 #############
 ## Install ##
@@ -168,6 +172,7 @@ catkin_install_python(PROGRAMS
     scripts/can_motor/joint+odom.py
     scripts/t265_imu/imu_pub.py
     scripts/t265_imu/tf_imu.py
+    scripts/scan_filter.py
     
     DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

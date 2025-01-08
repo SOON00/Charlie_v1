@@ -28,7 +28,7 @@ def scan_callback(scan_msg):
 
     # 필터링된 데이터를 /scan 토픽으로 발행
     scan_pub.publish(filtered_scan_msg)
-    rospy.loginfo("Publishing filtered scan data...")
+    #rospy.loginfo("Publishing filtered scan data...")
 
 def laser_scan_subscriber():
     rospy.init_node('filtered_scan_publisher', anonymous=True)
