@@ -12,8 +12,8 @@ class JointStatePublisher:
         self.left_wheel_angle = 0.0  # 왼쪽 바퀴 초기 각도
         self.right_wheel_angle = 0.0  # 오른쪽 바퀴 초기 각도
 
-        self.wheel_radius = 0.1  # 바퀴 반지름 (예시)
-        self.axle_length = 0.35  # 바퀴 간 거리 (예시)
+        self.wheel_radius = 0.085  # 바퀴 반지름
+        self.axle_length = 0.47  # 바퀴 간 거리
 
         self.pub = rospy.Publisher('/joint_states', JointState, queue_size=10)
         self.sub = rospy.Subscriber('/cmd_vel', Twist, self.cmd_vel_callback)

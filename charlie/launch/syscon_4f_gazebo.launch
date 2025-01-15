@@ -1,11 +1,11 @@
 <launch>
   <arg name="model" default="charlie"/>
-  <arg name="x_pos" default="0.0"/>
-  <arg name="y_pos" default="0.0"/>
-  <arg name="z_pos" default="0.0"/>
+  <arg name="x_pos" value="-13"/>
+  <arg name="y_pos" value="-8.5 "/>
+  <arg name="z_pos" value="0.25"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find charlie)/worlds/stage_1.world"/>
+    <arg name="world_name" value="$(find charlie)/worlds/syscon_4f.world"/>
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" value="true"/>

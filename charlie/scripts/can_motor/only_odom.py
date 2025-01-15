@@ -15,7 +15,7 @@ class Odom_class:
 
         # 로봇의 기본 파라미터
         self.wheels_separation = 0.48  # 휠 간 거리 (m)
-        self.wheels_radius = 0.08255  # 휠 반지름 (m)
+        self.wheels_radius = 0.085  # 휠 반지름 (m)
 
         # 상태 변수들
         self.robot_pose = np.array([0.0, 0.0, 0.0])  # 로봇의 위치 (x, y, theta)

@@ -1,9 +1,6 @@
 <?xml version="1.0" ?>
 
-<robot name="charlie" xmlns:xacro="http://ros.org/wiki/xacro">
-
-  <xacro:include filename="$(find charlie)/urdf/charlie.gazebo.xacro"/>
-
+<robot name="charlie">
   <!-- Base link -->
   <link name="base_footprint"/>
 
@@ -29,11 +26,11 @@
       </geometry>
       <origin xyz="0 0 0" rpy="0 0 0"/>
     </collision>
-    <inertial>
-      <mass value="4.12"/>
-      <origin xyz="0 0 0.0015" rpy="0 0 0"/>
-      <inertia ixx="0.0556" ixy="0" ixz="0" iyy="0.0596" iyz="0" izz="0.362"/>
-    </inertial>
+    <!--inertial>
+      <mass value="5.0"/>
+      <origin xyz="0 0 0.05" rpy="0 0 0"/>
+      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+    </inertial-->
   </link>
   
   <joint name="battery_joint" type="fixed">
@@ -89,13 +86,6 @@
       </geometry>
       <origin xyz="0 0 0" rpy="0 0 0"/>
     </collision>
-    
-    <inertial>
-      <mass value="0.258"/>
-      <inertia ixx="0.000939" ixy="0" ixz="0" iyy="0.000939" iyz="0" izz="0.000939"/>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-    </inertial>
-
   </link>
 
   <link name="wheel_right_link">
@@ -114,13 +104,6 @@
       </geometry>
       <origin xyz="0 0 0" rpy="0 0 0"/>
     </collision>
-    
-    <inertial>
-      <mass value="0.258"/>
-      <inertia ixx="0.000939" ixy="0" ixz="0" iyy="0.000939" iyz="0" izz="0.000939"/>
-      <origin xyz="0 0 0" rpy="0 0 0"/>
-    </inertial>
-    
   </link>
 
   <!-- Casters -->

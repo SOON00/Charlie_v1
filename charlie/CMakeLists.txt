@@ -170,6 +170,7 @@ catkin_install_python(PROGRAMS
     scripts/can_motor/motor_control_pdo.py
     scripts/can_motor/teleop_keyboard.py
     scripts/can_motor/joint+odom.py
+    scripts/can_motor/only_odom.py
     scripts/t265_imu/imu_pub.py
     scripts/t265_imu/tf_imu.py
     scripts/scan_filter.py
